@@ -2,7 +2,7 @@ package matrix;
 
 public class MatrixDouble {
     private final double[][] data;
-    private final int N;  // number of rows
+    private final int N;  // number of rows    // не рекомендуется называть экземплярные переменные большими буквами
     private final int M;  // number of columns
 
     // Создает пустую матрицу размера n х m
