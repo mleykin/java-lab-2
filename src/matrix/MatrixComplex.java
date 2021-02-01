@@ -9,7 +9,9 @@ public class MatrixComplex {
 
     // Создает пустую матрицу размера n х m
     public MatrixComplex(int n, int m) {
-        if (n < 0 || m < 0) throw new RuntimeException("Negative matrix size");
+        if (n < 0 || m < 0) {
+            throw new RuntimeException("Negative matrix size");
+        }
 
         this.N = n;
         this.M = m;
@@ -34,15 +36,18 @@ public class MatrixComplex {
     }
 
     public Complex get(int i, int j) {
-        if (i > N || j > M || j < 0 || i < 0)
+        if (i > N || j > M || j < 0 || i < 0) {
             throw new IndexOutOfBoundsException("Matrix index out of bounds!");
+        }
 
         return data[i][j];
     }
 
     // Умножение матриц
     public MatrixComplex mul(MatrixComplex other) {
-        if (M != other.N) throw new RuntimeException("Matrix size does not match!");
+        if (M != other.N) {
+            throw new RuntimeException("Matrix size does not match!");
+        }
 
         var temp = new MatrixComplex(N, other.M);
 
@@ -66,7 +71,9 @@ public class MatrixComplex {
 
     // Сложение матриц
     public MatrixComplex add(MatrixComplex other) {
-        if (N != other.N || M != other.M) throw new RuntimeException("Matrix size does not match!");
+        if (N != other.N || M != other.M) {
+            throw new RuntimeException("Matrix size does not match!");
+        }
 
         var temp = new MatrixComplex(N, M);
 
@@ -84,7 +91,9 @@ public class MatrixComplex {
 
     // Транспонирование
     public MatrixComplex transpose() {
-        if (N != M) throw new RuntimeException("Matrix must be square!");
+        if (N != M) {
+            throw new RuntimeException("Matrix must be square!");
+        }
 
         MatrixComplex temp = new MatrixComplex(N, M);
         for (int i = 0; i < M; i++)
@@ -96,7 +105,9 @@ public class MatrixComplex {
 
     // Приведение матрицы к треугольной форме
     public MatrixComplex triangleForm() {
-        if (N != M) throw new RuntimeException("Matrix must be square!");
+        if (N != M) {
+            throw new RuntimeException("Matrix must be square!");
+        }
 
         var triangle = new MatrixComplex(this);
 
@@ -114,7 +125,9 @@ public class MatrixComplex {
 
     // Вычисление детерминанта с помощью метода Гаусса (с помощью приведения к треугольной форме)
     public Complex det() {
-        if (N != M) throw new RuntimeException("Matrix must be square!");
+        if (N != M) {
+            throw new RuntimeException("Matrix must be square!");
+        }
 
         var triangle = this.triangleForm();
 

@@ -7,7 +7,9 @@ public class MatrixDouble {
 
     // Создает пустую матрицу размера n х m
     public MatrixDouble(int n, int m) {
-        if (n < 0 || m < 0) throw new RuntimeException("Negative matrix size");
+        if (n < 0 || m < 0) {
+            throw new RuntimeException("Negative matrix size");
+        }
 
         this.N = n;
         this.M = m;
@@ -28,15 +30,18 @@ public class MatrixDouble {
     }
 
     public double get(int i, int j) {
-        if (i > N || j > M || j < 0 || i < 0)
+        if (i > N || j > M || j < 0 || i < 0) {
             throw new IndexOutOfBoundsException("Matrix index out of bounds!");
+        }
 
         return data[i][j];
     }
 
     // Умножение матриц
     public MatrixDouble mul(MatrixDouble other) {
-        if (M != other.N) throw new RuntimeException("Matrix size does not match!");
+        if (M != other.N) {
+            throw new RuntimeException("Matrix size does not match!");
+        }
 
         var temp = new MatrixDouble(N, other.M);
 
@@ -60,7 +65,9 @@ public class MatrixDouble {
 
     // Сложение матриц
     public MatrixDouble add(MatrixDouble other) {
-        if (N != other.N || M != other.M) throw new RuntimeException("Matrix size does not match!");
+        if (N != other.N || M != other.M) {
+            throw new RuntimeException("Matrix size does not match!");
+        }
 
         var temp = new MatrixDouble(N, M);
 
@@ -78,7 +85,9 @@ public class MatrixDouble {
 
     // Транспонирование
     public MatrixDouble transpose() {
-        if (N != M) throw new RuntimeException("Matrix must be square!");
+        if (N != M) {
+            throw new RuntimeException("Matrix must be square!");
+        }
 
         MatrixDouble temp = new MatrixDouble(N, M);
         for (int i = 0; i < M; i++)
@@ -90,7 +99,9 @@ public class MatrixDouble {
 
     // Приведение матрицы к треугольной форме
     public MatrixDouble triangleForm() {
-        if (N != M) throw new RuntimeException("Matrix must be square!");
+        if (N != M) {
+            throw new RuntimeException("Matrix must be square!");
+        }
 
         var triangle = new MatrixDouble(this);
 
@@ -108,7 +119,9 @@ public class MatrixDouble {
 
     // Вычисление детерминанта с помощью метода Гаусса (с помощью приведения к треугольной форме)
     public double det() {
-        if (N != M) throw new RuntimeException("Matrix must be square!");
+        if (N != M) {
+            throw new RuntimeException("Matrix must be square!");
+        }
 
         var triangle = this.triangleForm();
 
